@@ -6,6 +6,7 @@
 	<script src='js/three.js'></script>
 	<script src='js/OBJLoader.js'></script>
 	<script src='js/MTLLoader.js'></script>
+	<!-- <script src='js/GLTFLoader.js'></script> -->
 	<!-- include jsartookit -->
 	<script src="jsartoolkit5/artoolkit.min.js"></script>
 	<script src="jsartoolkit5/artoolkit.api.js"></script>
@@ -127,19 +128,21 @@ function initialize()
 	
 	new THREE.MTLLoader()
 		.setPath( 'models/' )
-		.load( 'fish-2.mtl', function ( materials ) {
+		.load( '1-plus-2-architects-col.mtl', function ( materials ) {
 			materials.preload();
 			new THREE.OBJLoader()
 				.setMaterials( materials )
 				.setPath( 'models/' )
-				.load( 'fish-2.obj', function ( group ) {
+				.load( '1-plus-2-architects-col.obj', function ( group ) {
 					mesh0 = group.children[0];
 					mesh0.material.side = THREE.DoubleSide;
-					mesh0.position.y = 0.25;
-					mesh0.scale.set(0.25,0.25,0.25);
+					mesh0.position.y = 0;
+					mesh0.scale.set(1,1,1);
 					markerRoot1.add(mesh0);
 				}, onProgress, onError );
 		});
+
+	// new THREE.GLTFLoader()
 }
 
 
